@@ -4,11 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Driver {
+public class Driver {   
 	
 	private static WebDriver driver;
 	
@@ -39,6 +40,10 @@ public class Driver {
 				WebDriverManager.operadriver().setup();
 				driver = new OperaDriver();
 				break;
+			case "ie":
+				WebDriverManager.iedriver().setup();
+				driver = new InternetExplorerDriver();
+				break;
 			default:
 				System.out.println("Wrong driver");
 				break;
@@ -61,14 +66,10 @@ public class Driver {
 		
 		
 		if(driver != null) {
-			driver.quit();
-			driver = null;
+			driver.quit();  // quit() does not set driver instance to null;
+			driver = null; // makes sure that driver instance is set to null so that next test method initializes its own driver
 		}
 		
-		
-		
-
-
 		
 	}
 	
