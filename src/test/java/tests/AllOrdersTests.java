@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
+import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -61,7 +62,7 @@ public class AllOrdersTests extends TestBase{
 	@Test
 	public void verifyCheckboxesusingPOMmethods() {
 		
-		
+	
 		
 		AllOrdersPage op  = new AllOrdersPage();
 		
@@ -77,14 +78,14 @@ public class AllOrdersTests extends TestBase{
 			assertTrue(!checkbox.isSelected());
 		}
 		
-		
+		throw new SkipException("skipped");
 		
 	}
 	
 	@Test
 	public void verifyAllLinks() {
 		
-		logger = reporter.createTest("Verify All Links On The Page");
+		
 		
 		logger.info("Obtaining all the links from the page");
 		
@@ -98,7 +99,7 @@ public class AllOrdersTests extends TestBase{
 														"Order",
 														"Check All",
 														"Uncheck All",
-														"Logout"
+														"Logou"
 														);
 		
 		logger.info("Extracting the link texts");
@@ -111,9 +112,7 @@ public class AllOrdersTests extends TestBase{
 		
 		assertEquals(actualLinkNames, expectedLinkNames);	
 		
-		logger.pass("Test Passed");
-		logger.fail("Test Failed");
-		logger.skip("Test Skipped");
+//		throw new SkipException("test skipped");  // to explicitly skip the test
 		
 			
 		
