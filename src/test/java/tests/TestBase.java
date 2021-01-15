@@ -69,6 +69,7 @@ public abstract class TestBase {
 		actions = new Actions(driver);
 		jsExecutor = (JavascriptExecutor)driver;
 		driver.get(ConfigReader.getProperty("url"));
+		
 		String date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
 		logger = reporter.createTest("TEST "+ count + " created at: " + date );
 		count++;
@@ -88,9 +89,9 @@ public abstract class TestBase {
 			logger.fail(testResult.getThrowable());
 			// Add screenshot
 			
-			String path = BrowserUtils.getScreenshot("Failed");
-			
-			logger.addScreenCaptureFromPath(path);
+//			String path = BrowserUtils.getScreenshot("Failed");
+//			
+//			logger.addScreenCaptureFromPath(path);
 			
 		}
 		

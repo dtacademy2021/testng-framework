@@ -2,10 +2,14 @@ package utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -44,6 +48,27 @@ public class Driver {
 				WebDriverManager.iedriver().setup();
 				driver = new InternetExplorerDriver();
 				break;
+			case "headlesschrome":
+				WebDriverManager.chromedriver().setup();
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--headless");
+				options.addArguments("--disable-gpu"); // option that must be added only for Windows systems
+				driver = new ChromeDriver(options);
+				break;	
+			case "headlessfirefox":
+				WebDriverManager.firefoxdriver().setup();
+				FirefoxOptions foptions = new FirefoxOptions();
+	            foptions.addArguments("--headless");
+	          	driver = new FirefoxDriver(foptions);
+				break;	
+			case "phantomjs":
+				WebDriverManager.phantomjs().setup();
+				driver 	= new PhantomJSDriver();
+				break;		
+			case "htmlunit":
+				driver = new HtmlUnitDriver(true); //true --> enables JavaScript
+				break;		
+				
 			default:
 				System.out.println("Wrong driver");
 				break;
