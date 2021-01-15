@@ -25,6 +25,9 @@ public class AllOrdersPage {
 	
 	@FindBy (xpath = "//input[@type='checkbox']")
 	public List<WebElement> checkboxes ;
+
+	@FindBy (tagName = "a")
+	public List<WebElement> allLinks;
 	
 	
 	public void checkAllCheckBoxes() {

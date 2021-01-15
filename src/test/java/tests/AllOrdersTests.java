@@ -1,27 +1,41 @@
 package tests;
 
+
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import pageClasses.AllOrdersPage;
 import pageClasses.LoginPage;
+import utilities.BrowserUtils;
 
 public class AllOrdersTests extends TestBase{
+	
+	@BeforeMethod           // Superclass before methods are run before subclass before methods
+	public void setUp() {
+		
+		LoginPage lp = new LoginPage();		
+		
+		lp.positiveLogin();
+		
+		assertEquals(driver.getTitle(), "Web Orders");
+	}
+	
 	
 	
 	
 	@Test
 	public void verifyCheckboxes() {
-		LoginPage lp = new LoginPage();		
 		
-		lp.usernameField.sendKeys("Tester");
-		lp.passwordField.sendKeys("test");
-		lp.loginButton.click();
-		
-		assertEquals(driver.getTitle(), "Web Orders");
 		
 		
 		AllOrdersPage op  = new AllOrdersPage();
@@ -46,11 +60,7 @@ public class AllOrdersTests extends TestBase{
 	
 	@Test
 	public void verifyCheckboxesusingPOMmethods() {
-		LoginPage lp = new LoginPage();		
 		
-		lp.positiveLogin();
-		
-		assertEquals(driver.getTitle(), "Web Orders");
 		
 		
 		AllOrdersPage op  = new AllOrdersPage();
@@ -69,6 +79,52 @@ public class AllOrdersTests extends TestBase{
 		
 		
 		
+	}
+	
+	@Test
+	public void verifyAllLinks() {
+		
+		logger = reporter.createTest("Verify All Links On The Page");
+		
+		logger.info("Obtaining all the links from the page");
+		
+		List<WebElement> links = new AllOrdersPage().allLinks;
+		
+		
+		
+		
+		List<String> expectedLinkNames = Arrays.asList( "View all orders",
+														"View all products",
+														"Order",
+														"Check All",
+														"Uncheck All",
+														"Logout"
+														);
+		
+		logger.info("Extracting the link texts");
+		List<String> actualLinkNames = BrowserUtils.getElementsText(links);
+		
+		logger.info("Sorting both lists");
+		Collections.sort(actualLinkNames);
+		Collections.sort(expectedLinkNames);
+		logger.info("Comparing the lists");		
+		
+		assertEquals(actualLinkNames, expectedLinkNames);	
+		
+		logger.pass("Test Passed");
+		logger.fail("Test Failed");
+		logger.skip("Test Skipped");
+		
+			
+		
+	}
+	
+	 
+	@AfterMethod           //Superclass after methods run after subclass after methods              
+	public void tearDownSub() {
+		
+		System.out.println(System.getProperty("user.dir"));
+		System.out.println("Sub after");
 	}
 
 }

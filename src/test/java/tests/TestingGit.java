@@ -1,9 +1,13 @@
 package tests;
 
-public class TestingGit {
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+public class TestingGit extends TestBase{
+@Test
+	public void main() {
+		driver.get("https://www.delta.com/");
+		driver.findElement(By.xpath("//a[.='Sign Up']")).click();
 
 	}
 
