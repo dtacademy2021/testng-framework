@@ -8,11 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import utilities.Driver;
 
-public class AllOrdersPage {
+public class AllOrdersPage  extends PageClassBase{
 	
-	public AllOrdersPage() {
-		PageFactory.initElements(Driver.getDriver(), this);  
-	}
 	
 	
 

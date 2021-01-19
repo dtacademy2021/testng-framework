@@ -50,7 +50,7 @@ public class LoginTests extends TestBase{
 		lp.passwordField.sendKeys("test");
 		lp.loginButton.click();
 		
-		String expectedURL = "http://secure.smartbearsoftware.com/samples/testcomplete12/weborders/";
+		String expectedURL = "http://secure.smartbearsoftware.com/samples/testcomplete12/weborderz/";
 		String actualURL = driver.getCurrentUrl();
 		
 		assertEquals(actualURL, expectedURL, "Urls didn't match");
@@ -136,7 +136,7 @@ public class LoginTests extends TestBase{
 		driver.findElement(By.id("ctl00_MainContent_password")).sendKeys("test");
 		driver.findElement(By.id("ctl00_MainContent_login_button")).click();
 		
-		String expectedURL = "http://secure.smartbearsoftware.com/samples/testcomplete12/weborders/";
+		String expectedURL = "http://secure.smartbearsoftware.com/samples/testcomplete12/weborderz/";
 		String actualURL = driver.getCurrentUrl();
 		
 		assertEquals(actualURL, expectedURL, "Urls didn't match");

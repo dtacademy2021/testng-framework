@@ -40,7 +40,7 @@ public abstract class TestBase {
 	protected static ExtentReports reporter;
 	protected static ExtentSparkReporter htmlReporter;
 	protected static ExtentTest logger;  // needs to be initialized in each test
-	protected static int count;
+	private static int count;
 	
 	@BeforeSuite
 	public void setUpReport() {
@@ -92,9 +92,9 @@ public abstract class TestBase {
 			logger.fail(testResult.getThrowable());
 			// Add screenshot
 			
-//			String path = BrowserUtils.getScreenshot("Failed");
-//			
-//			logger.addScreenCaptureFromPath(path);
+			String path = BrowserUtils.getScreenshot("Failed");
+			
+			logger.addScreenCaptureFromPath(path);
 			
 		}
 		
