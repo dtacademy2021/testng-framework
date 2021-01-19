@@ -103,6 +103,13 @@
 
 						<suiteXmlFiles>
 							<suiteXmlFile>${runner}</suiteXmlFile>
+							
+						<!--  <suiteXmlFile>${runner1}</suiteXmlFile>
+							  <suiteXmlFile>${runner2}</suiteXmlFile> 
+							 
+							 To run testng-failed.xml after another xml file 
+							  
+							  -->
 						
 						</suiteXmlFiles>
 
