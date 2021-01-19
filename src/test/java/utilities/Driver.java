@@ -21,11 +21,15 @@ public class Driver {
 	
 	
 	
-	public static WebDriver getDriver() {
+	public static WebDriver getDriver(String browser) {
 		
 		if(driver == null) {
 			
-			String browser = ConfigReader.getProperty("browser").toLowerCase();
+			if(browser == null) {
+				browser = ConfigReader.getProperty("browser").toLowerCase();
+			}
+			
+			
 			
 			switch (browser) {
 			case "chrome":
@@ -83,6 +87,12 @@ public class Driver {
 		
 		return driver;
 		
+	}
+	
+	
+	
+	public static WebDriver getDriver() {
+		return getDriver(null);
 	}
 	
 	

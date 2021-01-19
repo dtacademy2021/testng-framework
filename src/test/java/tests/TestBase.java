@@ -16,6 +16,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -60,9 +62,10 @@ public abstract class TestBase {
 	
 	
 	@BeforeMethod (alwaysRun = true)
-	public void setupMethod(ITestContext test) {
+	@Parameters ("browser")
+	public void setupMethod(@Optional String browser) {
 		
-		driver = Driver.getDriver();
+		driver = Driver.getDriver(browser);
 		driver.manage().timeouts().
 			implicitlyWait(Long.parseLong(ConfigReader.getProperty("implicitTimeout")), TimeUnit.SECONDS);
 		driver.manage().window().maximize();
