@@ -107,8 +107,8 @@
 						<!--  <suiteXmlFile>${runner1}</suiteXmlFile>
 							  <suiteXmlFile>${runner2}</suiteXmlFile> 
 							 
-							 To run testng-failed.xml after another xml file 
-							  
+							 To run testng-failed.xml after another xml file:
+						mvn test -Drunner1=login_tests.xml -Drunner2=test-output/testng-failed.xml  
 							  -->
 						
 						</suiteXmlFiles>
