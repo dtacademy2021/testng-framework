@@ -59,7 +59,7 @@ public class PlaceOrderTests extends TestBase{
 	 *  1. You can generate yourself
 	 *  2. Faker class
 	 *  3. External test data generators -> mockaroo 
-	 *  4. It is provided by the management
+	 *  4. It is provided by the management -> csv, txt, doc, xls files
 	 */
 	
 	@DataProvider (name = "customers", parallel = true) // 
