@@ -97,7 +97,7 @@ public class Driver {
 	
 	
 	
-	public static synchronized void quit() {
+	public static synchronized void quit() {  
 		
 		
 		if(drivers.get() != null) {

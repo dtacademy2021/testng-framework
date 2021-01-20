@@ -61,7 +61,7 @@ public abstract class TestBase {
 	
 	
 	
-	@BeforeMethod (alwaysRun = true)
+	@BeforeMethod ( alwaysRun = true)
 	@Parameters ("browser")
 	public void setupMethod(@Optional String browser) {
 		
